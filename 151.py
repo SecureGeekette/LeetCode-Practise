@@ -32,6 +32,8 @@ class Solution:
 
         return " ".join(reversed_list)
 
+Alternate solution (one liner):
+        return " ".join(s.split()[::-1])
 
 Learnings:
 - There is an inbuilt function in python to split a string - split(). However, need to learn to solve this problem without this inbuilt function (or understand how it works)
