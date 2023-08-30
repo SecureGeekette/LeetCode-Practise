@@ -35,5 +35,25 @@ class Solution:
 Alternate solution (one liner):
         return " ".join(s.split()[::-1])
 
+Without using Split:
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
+
+        temp = ""
+        res = []
+
+        for c in s:
+            if c != " ":
+                temp += c
+            elif temp != "":
+                res.append(temp)
+                temp = ""
+
+        if temp != "":
+            res.append(temp)
+            
+        return " ".join(res[::-1])
+
 Learnings:
 - There is an inbuilt function in python to split a string - split(). However, need to learn to solve this problem without this inbuilt function (or understand how it works)
