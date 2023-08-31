@@ -36,3 +36,28 @@ class Solution:
         return max_water
 
   This solution although correct, won't work on all test cases - Time Limit Exceeded Error
+
+
+O(n) solution - Logic remains the same but we only need to compare the heights each time, this can be done in 1 loop
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+
+        max_water = 0
+        cur_water = 0
+        
+        l = 0
+        r = len(height)-1
+
+        while l < r:
+
+            cur_water = min(height[l], height[r])*(r-l)
+            if max_water < cur_water:
+                max_water = cur_water
+
+            if height[l] <= height[r]:
+                l = l+1
+            else:
+                r = r-1 
+
+        return max_water
