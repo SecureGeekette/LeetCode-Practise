@@ -39,3 +39,34 @@ class Solution:
         return max_vowels
         
 
+Wrote O(n) solution, but is still slow - can get better
+
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+
+        max_sum = 0
+        vowels = "aeiou"
+        arr_s = []
+        sum_s = 0
+
+        for char in s:
+            if char in vowels:
+                arr_s.append(1)
+            else:
+                arr_s.append(0)
+
+        for i in range(0,k):
+            sum_s += arr_s[i]
+        max_sum = sum_s
+
+        for i in range(1, len(s)-k+1):
+            if i < i+k+1:
+                sum_s = sum_s - arr_s[i-1] + arr_s[i+k-1]
+                print(sum_s)
+            
+                if max_sum < sum_s:
+                    max_sum = sum_s
+                    if max_sum == k:
+                        return max_sum
+        
+        return max_sum
