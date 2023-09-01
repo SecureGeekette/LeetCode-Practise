@@ -70,3 +70,37 @@ class Solution:
                         return max_sum
         
         return max_sum
+
+Minor changes - still O(n)
+
+class Solution:
+    def maxVowels(self, s: str, k: int) -> int:
+
+        max_sum = 0
+        vowels = "aeiou"
+        arr_s = []
+        sum_s = 0
+
+        for char in s:
+            if char in vowels:
+                arr_s.append(1)
+            else:
+                arr_s.append(0)
+
+        for i in range(0,k):
+            sum_s += arr_s[i]
+        max_sum = sum_s
+        if max_sum == k:
+            return max_sum
+
+        for i in range(k, len(s)):
+            if arr_s[i-k] == 1:
+                sum_s -= 1
+            if arr_s[i] == 1:
+                sum_s += 1
+            
+            max_sum = max(max_sum, sum_s)
+            if max_sum == k:
+                return max_sum
+        
+        return max_sum
