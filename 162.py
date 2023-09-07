@@ -41,5 +41,28 @@ class Solution:
 
   Mistake made: Range limits - ber careful of edge cases, first and last elements specifically
 
-O(logn) solution:
+O(logn) solution: Not very intuitive and we can't be sure if it's O(logn)
 
+class Solution:
+    def findPeakElement(self, nums: List[int]) -> int:
+
+        start = 0
+        end = len(nums)-1
+
+        if len(nums) == 1:
+            return 0
+        elif nums[0] > nums[1]:
+            return 0
+        elif nums[end] > nums[end-1]:
+            return end
+
+
+        while start <= end:
+            mid = (start + end)//2
+
+            if nums[mid] > nums[mid+1] and nums[mid] > nums[mid-1]:
+                return mid
+            elif nums[mid] > nums[mid-1]:
+                start = mid
+            else:
+                end = mid
