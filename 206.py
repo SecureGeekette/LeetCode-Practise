@@ -39,4 +39,6 @@ class Solution:
             current.next = None
 
         return dummy.next
-        
+
+
+The problem with this code is that it takes 0(n) memory to store all the list nodes. We can use the two pointer approach to do this in O(1)
