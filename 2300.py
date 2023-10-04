@@ -37,4 +37,28 @@ class Solution:
                     count[i]+= 1
         
         return count
-        
+
+
+Time optimized solution using sorting and binary search:
+
+    def successfulPairs(self, spells: List[int], potions: List[int], success: int) -> List[int]:
+
+        potions = sorted(potions)
+        count = []
+
+        for ele in spells:
+
+            low = 0
+            high = len(potions) - 1
+
+            while low <= high:
+
+                mid = (low+high)//2
+                if ele*potions[mid] < success:
+                    low = mid+1
+                else:
+                    high = mid-1
+
+            count.append(len(potions)-low)
+
+        return count
