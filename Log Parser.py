@@ -41,6 +41,42 @@ Examples:
 ^[A-Z][a-z]*$: Matches strings that start with an uppercase letter followed by zero or more lowercase letters.
 
 
+
+  Parsing Apache web server logs:
+
+import re
+
+sample_text_apache_log = "192.168.1.105 - - [09/Oct/2023:14:32:10 +0000] \"GET /example-page HTTP/1.1\" 200 1234"
+
+
+ip_pattern = r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
+timstamp_pattern = "\d{2}\/[A-z][a-z]{2}\/\d{4}"
+http_request = "GET|POST"
+http_status_code = r"\s\b\d{3}\b\s" #\s is space in regex
+
+
+ips = re.findall(ip_pattern, sample_text_apache_log)
+print("IPs: ")
+print(ips)
+
+timestamps = re.findall(timstamp_pattern, sample_text_apache_log)
+print("Timestamps: ")
+print(timestamps)
+
+requests = re.findall(http_request, sample_text_apache_log)
+print("Requests: ")
+print(requests)
+
+status_code = re.findall(http_status_code, sample_text_apache_log)
+print("Status Codes: ")
+print(status_code)
+
+
+
+
+
+
+
 1. Assuming we have Apache web server logs, we have to write a parser which details the IP Address, HTTP method, HTTP protocol, HTTP status code, response size, timestamp etc.
 
 127.0.0.1 - - [01/Nov/2023:10:30:42 +0000] "GET /index.html HTTP/1.1" 200 512
