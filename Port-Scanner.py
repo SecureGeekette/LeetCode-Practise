@@ -28,3 +28,4 @@ for port in ports:
 
     # Adding additional capability to do banner grabbing for open ports (service, version etc.)
     # Generally done via netcat: nc -vv target portno. once open port is identified
+    # On mac, i found service/ port details via lsof -i "open port"/tcp
