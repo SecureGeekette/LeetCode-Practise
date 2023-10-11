@@ -26,4 +26,5 @@ for port in ports:
     except socket.error:
         print("Error with socket")
 
-
+    # Adding additional capability to do banner grabbing for open ports (service, version etc.)
+    # Generally done via netcat: nc -vv target portno. once open port is identified
