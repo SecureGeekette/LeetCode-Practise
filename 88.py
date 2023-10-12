@@ -37,6 +37,8 @@ It's very easy to solve this using O(n) extra memory i.e. keep comparing both ar
 1st attempt (47/59 testcases passed):
 Baiscally comparing both arrays and if number is from nums2 then we move everything from idx onwards by 1 i.e. push to right, but there seem to be a lot of edge cases here
 
+What I missed in this solution is time complexity, in the worst case if everything in nums2 is lesser than everything in nums1, so each time we need to push all elements to the right which is O(n) for each element in nums 2, so O(n^2).
+
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
@@ -66,3 +68,31 @@ class Solution:
 
 
 Saw solution (Neetcode) - we should be comparing from end of array since both the arrays are already in sorted order
+
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+
+        last = m+n-1
+        i = m-1
+        j = n-1
+
+        while i >= 0 and j >= 0:
+
+            if nums1[i] < nums2[j]:
+                nums1[last] = nums2[j]
+                j -= 1
+            else:
+                nums1[last] = nums1[i]
+                i -=1
+
+            last -=1
+
+        while j >= 0:
+            nums1[last] = nums2[j]
+            j -= 1
+            last -= 1
+
+
