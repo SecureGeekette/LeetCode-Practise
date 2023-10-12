@@ -31,3 +31,38 @@ nums2.length == n
 0 <= m, n <= 200
 1 <= m + n <= 200
 -109 <= nums1[i], nums2[j] <= 109
+
+It's very easy to solve this using O(n) extra memory i.e. keep comparing both arrays and add them in a sorted fashion to a third array and then add these back to nums1 for output, but since we can't do that we need to do in-place sorting
+
+1st attempt (47/59 testcases passed):
+Baiscally comparing both arrays and if number is from nums2 then we move everything from idx onwards by 1 i.e. push to right, but there seem to be a lot of edge cases here
+
+class Solution:
+    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+
+        i = 0
+        j = 0
+
+        if n != 0:   
+            while i < m+n and j < n:
+                if m == 0:
+                    nums1[i] = nums2[j]
+                    i += 1
+                    j += 1
+                elif nums1[i] == 0 and i >= m:
+                    nums1[i] = nums2[j]
+                    i+=1
+                    j+=1
+                elif nums1[i] <= nums2[j]:
+                    i += 1
+                elif nums1[i] > nums2[j]:
+                    for idx in range(m+n-2,i-1,-1):
+                        nums1[idx+1] = nums1[idx]
+                    nums1[i] = nums2[j]
+                    j+=1
+
+
+Saw solution (Neetcode) - we should be comparing from end of array since both the arrays are already in sorted order
