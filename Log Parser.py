@@ -41,8 +41,10 @@ Examples:
 ^[A-Z][a-z]*$: Matches strings that start with an uppercase letter followed by zero or more lowercase letters.
 
 
+  Assuming we have Apache web server logs, we have to write a parser which details the IP Address, HTTP method, HTTP protocol, HTTP status code, response size, timestamp etc.
 
-  Parsing Apache web server logs:
+127.0.0.1 - - [01/Nov/2023:10:30:42 +0000] "GET /index.html HTTP/1.1" 200 512
+
 
 import re
 
@@ -77,6 +79,3 @@ print(status_code)
 
 
 
-1. Assuming we have Apache web server logs, we have to write a parser which details the IP Address, HTTP method, HTTP protocol, HTTP status code, response size, timestamp etc.
-
-127.0.0.1 - - [01/Nov/2023:10:30:42 +0000] "GET /index.html HTTP/1.1" 200 512
