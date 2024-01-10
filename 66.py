@@ -25,8 +25,8 @@ Explanation: The array represents the integer 9.
 Incrementing by one gives 9 + 1 = 10.
 Thus, the result should be [1,0].
 
-Solution:
 
+Solution:
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
 
