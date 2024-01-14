@@ -124,6 +124,33 @@ else:
     print("None")
 
 
+Log example: (print timestamp and message)
+2022-03-24 15:00:01 INFO: Starting server
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:00:05 WARNING: Request from IP 192.168.0.1 was blocked
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:02 ERROR: Could not connect to database
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 Some other message
+2022-03-24 15:01:05 INFO: Server shutting down
+
+Solution:
+import re
+
+with open("log.txt", "r") as log:
+  for line in log:
+    match = re.search(r'(\d{4}-\d{2}-\d{2}\s\d{2}:\d{2}:\d{2}\s)(.*)', line)
+    if match:
+      print("timestamp: " + match.group(1))
+      print("message: " + match.group(2))
+      print("\n")
+
 
 
 
