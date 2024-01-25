@@ -1,3 +1,15 @@
 Sort an array without using inbuilt functions (can't use sorted or .sort())
 
 912. Sort an Array
+
+Brute force - O(n^2) solution
+
+    def sortArray(self, nums: List[int]) -> List[int]:
+
+        for j in range(len(nums)):
+            for i in range(1,len(nums)-j):
+                if nums[i] < nums[i-1]:
+                    nums[i-1], nums[i] = nums[i], nums[i-1]
+        return nums
+
+Get time limit exceeded error here
