@@ -1,1 +1,12 @@
 Build the Linux CLI command cd - Change directory
+
+# Build CLI command cd
+import os
+
+target_directory = "/home"
+
+os.chdir(target_directory)
+
+current_dir = os.getcwd()
+print(f"Current directory: {current_dir}")
+
