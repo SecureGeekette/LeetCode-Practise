@@ -36,3 +36,22 @@ class Solution:
 
   Learnings:
 - Learnt we could add a dummy node for similar questions. Also was returning head which was a mistake incase it gets deleted in the code, we should've been returning dummy.next
+
+Alternative Solution:
+
+class Solution:
+    def removeElements(self, head: Optional[ListNode], val: int) -> Optional[ListNode]:
+
+        dummy = ListNode(0)
+        dummy.next = head
+        cur = head
+        prev = dummy
+
+        while cur:
+            if cur.val == val:
+                prev.next = cur.next
+            else:
+                prev = cur
+            cur = cur.next
+
+        return dummy.next
