@@ -20,7 +20,7 @@ Output: [0,1]
 
 Solution
 
-1. Brute Force (O(n^2))
+1. Brute Force (O(n^2)) time and O(1) space
 
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
@@ -31,4 +31,19 @@ class Solution:
             for second_idx in range(first_idx+1, len(nums)):
                 if nums[first_idx] + nums[second_idx] == target:
                     return [first_idx, second_idx]
-        
+
+
+2. Hash Map (O(n)) solution time and 0(n) space
+
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+
+        hash_val = {}
+
+        for i in range(len(nums)):
+            search_val = target - nums[i]
+            if search_val in hash_val:
+                return [hash_val[search_val], i]
+            else:
+                hash_val[nums[i]] = i
+
