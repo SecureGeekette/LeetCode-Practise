@@ -46,4 +46,3 @@ class Solution:
                 return [hash_val[search_val], i]
             else:
                 hash_val[nums[i]] = i
-
