@@ -41,3 +41,36 @@ class Solution:
 
 
 Let's try to figure out ways to do this in O(1) space complexity
+
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        
+        slow = head
+        fast = head
+
+        #find middle (slow)
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        
+        #reverse second half of linked list
+        prev = None
+        while slow:
+            nxt = slow.next
+            slow.next = prev
+            prev = slow
+            slow = nxt
+
+        #check palindrome
+        start = head
+        end = prev
+
+        #checking if we reached the midpoint
+        while end:
+            if start.val != end.val:
+                return False
+            start = start.next
+            end = end.next
+
+        return True
+
