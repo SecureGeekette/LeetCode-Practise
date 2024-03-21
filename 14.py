@@ -32,3 +32,22 @@ class Solution:
 
 Mistakes I made 
 - I'm not running through all the possible test cases. I have to think through all possible scenarios and test cases
+
+The more intuitive solution but more time consuming one was:
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+
+        ans = ""
+
+        if not strs:
+            return ans
+
+        for j in range(len(strs[0])):
+            for i in range(len(strs)-1):
+                if strs[i][:j+1] != strs[i+1][:j+1]:
+                    return ans
+            ans = "".join([ans,strs[0][j]])
+
+        return ans
+        
+        
